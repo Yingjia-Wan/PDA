@@ -33,4 +33,5 @@ The ideal informalized output should meet the following criteria:
 1. semantically equivalent to the Lean 4 theorem and proof. (informalization success = T)
 2. both problem statement and proof use intuitive terms without Lean 4 functions mentioned, proves the intended theorem succesfully, and can be independently understood without prior knowledge of Lean 4. (informal proof correctness = T)
 
-Check the instruction and demo examples in the fewshot prompt for reference.
+Check the instruction and demo examples in the fewshot prompt for reference of an ideal informalization case.
+You can use tools like https://jsoneditoronline.org/ to compare two model output files more easily.
