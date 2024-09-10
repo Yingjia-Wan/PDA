@@ -1,0 +1,5 @@
+theorem coe_fn_mk (f : α → β) (g l r) : (Equiv.mk f g l r : α → β) = f :=\n   rfl
+# Context: /-- A function `f` from a measurable space to any type is called *simple*,\nif every preimage `f ⁻¹' {x}` is measurable, and the range is finite. This structure bundles\na function with these properties. -/\nstructure SimpleFunc.{u, v} (α : Type u) [MeasurableSpace α] (β : Type v) where\n  toFun : α → β\n  measurableSet_fiber' : ∀ x, MeasurableSet (toFun ⁻¹' {x})\n  finite_range' : (Set.range toFun).Finite\n\nlocal infixr:25 \" →ₛ \" => SimpleFunc\n\nnamespace SimpleFunc\n\nsection Measurable\n\nvariable [MeasurableSpace α]\n\ninstance instFunLike : FunLike (α →ₛ β) α β where\n  coe := toFun\n  coe_injective' | ⟨_, _, _⟩, ⟨_, _, _⟩, rfl => rfl
+# Problem: Prove that a simple function constructed using `Equiv.mk` with a function `f` is equal to the function `f` itself.
+
+theorem small_lift (α : Type u) [hα : Small.{v} α] : Small.{max v w} α :=\n   let ⟨⟨_, ⟨f⟩⟩⟩ := hα\n   Small.mk' <| f.trans (Equiv.ulift.{w}).symm\n 
