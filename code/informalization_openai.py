@@ -92,6 +92,6 @@ for sample in tqdm(samples, desc="Processing samples"):
     })
 
 # Write the new output data to the random_test.json file
-write_output('../output/random_test_sample10.json', new_samples)
+write_output('../FormL4/random_test_sample10.json', new_samples)
 
 print("Processing complete! Results saved to ../output/random_test_sample10.json.")
