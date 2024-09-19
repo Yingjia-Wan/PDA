@@ -4,9 +4,9 @@ import os
 # Function to add new items to each sample in the JSON data
 def add_items_to_samples(json_data):
     for sample in json_data:
-        sample['informalization_success'] = None  # or any default value you prefer
-        sample['informal_proof_correctness'] = None  # or any default value you prefer
-        sample['model_preference'] = None  # or any default value you prefer
+        sample['informalization_success'] = None
+        sample['informal_proof_correctness'] = None
+        sample['model_preference'] = None
     return json_data
 
 # List of input and output file pairs

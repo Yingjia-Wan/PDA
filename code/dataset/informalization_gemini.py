@@ -10,8 +10,6 @@ import vertexai
 from vertexai.generative_models import GenerativeModel, Part, SafetySetting, FinishReason
 from google.api_core.exceptions import ResourceExhausted 
 
-# Set up Google Cloud Project
-vertexai.init(project="bustling-surf-434708-h9", location="us-central1")  # Replace with your project ID
 
 # Function to read the prompt template from a file
 def read_prompt_template(file_path):
@@ -76,6 +74,10 @@ def get_response(model, prompt_input, generation_config, safety_settings, retrie
 
 
 def main(args):
+
+    # Set up Google Cloud Project
+    vertexai.init(project="bustling-surf-434708-h9", location=args.location)  # Replace with your project ID
+
     # Load the Gemini Pro model
     model = GenerativeModel(model_name=args.model_name)
 
@@ -178,6 +180,7 @@ def int_or_none(value):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process some JSON data with Gemini Pro.")
+    parser.add_argument('--location', type=str, required=True, help='gemini model quota location.')
     parser.add_argument('--input_file_path', type=str, required=True, help='Path to the input JSON file')
     parser.add_argument('--output_file_path', type=str, required=True, help='Path to the output JSON file')
     parser.add_argument('--prompt_template_path', type=str, default='../../prompt/fewshot_informalization.txt', help='Path to the prompt template file')
